@@ -21,7 +21,7 @@
     <h1>ようこそ　家計簿アプリへ</h1>
     <form action="register" method="post">
         預金残高：<input type="text" name="balance"><br />
-        今月の支払い：<input type="test" name="payment"><br />
+        今月の支払い：<input type="text" name="payment"><br />
         <input type="submit" value="送信">
     </form>
 </body>
