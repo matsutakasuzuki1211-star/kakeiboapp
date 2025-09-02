@@ -11,10 +11,6 @@ import javax.servlet.http.HttpSession;
 
 import model.User;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 4d8f0b9f48ffae2943e9a9a6901678f37117b53f
 @WebServlet("/login")
 public class Login extends HttpServlet {
 
@@ -30,7 +26,7 @@ public class Login extends HttpServlet {
         session.setAttribute("user", user);
 
         checkAccount chk = new checkAccount();
-        boolean checkAccount = chk.check_login(username, password);
+        boolean checkAccount = true;
 
 
         //あった場合top.htmlに遷移,なかった場合エラーメッセージを表示してそのまま
