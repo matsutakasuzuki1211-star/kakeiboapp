@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
 @WebServlet("/register")
 public class registerInfo extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -22,6 +23,13 @@ public class registerInfo extends HttpServlet {
         session.setAttribute("balance", balance);
         session.setAttribute("payment", payment);
 
-        
+        insertData inserter = new insertData();
+        int result = inserter.insertKakeibo((String)session.getAttribute("username"),balance, payment);
+        if (result > 0) {
+            request.getRequestDispatcher("/top.html").forward(request, response);
+        } else {
+            request.setAttribute("message", "情報の登録に失敗しました。");
+            request.getRequestDispatcher("/top.html").forward(request, response);
+        }
     }
 }

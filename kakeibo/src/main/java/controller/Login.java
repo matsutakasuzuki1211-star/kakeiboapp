@@ -22,8 +22,7 @@ public class Login extends HttpServlet {
 
         HttpSession session = request.getSession();
 
-        User user = new User(username, password);
-        session.setAttribute("user", user);
+        session.setAttribute("username", username);
 
         checkAccount chk = new checkAccount();
         boolean checkAccount = chk.check_login(username, password);

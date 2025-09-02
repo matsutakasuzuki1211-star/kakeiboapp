@@ -5,13 +5,14 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class insertData {
-    public int insertUser(int balance, int payment) {
-        String sql = "INSERT INTO Users (balance, payment) VALUES (?, ?)";
+    public int insertKakeibo(String username, int balance, int payment) {
+        String sql = "INSERT INTO kakeibos (username, balance, payment) VALUES (?, ?, ?)";
         int successFlg = 0;
         try (Connection conn = DBConnection.getConnection();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setInt(1, balance);
-            pstmt.setInt(2, payment);
+            pstmt.setString(1, username);
+            pstmt.setInt(2, balance);
+            pstmt.setInt(3, payment);
             successFlg = pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -19,5 +20,5 @@ public class insertData {
             e.printStackTrace();
         }
         return successFlg;
-}
+    }
 }

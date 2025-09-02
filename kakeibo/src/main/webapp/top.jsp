@@ -17,11 +17,20 @@
     <jsp:include page="header.jsp">
         <jsp:param name="username" value="<%= username %>" />
     </jsp:include>
+ <%
+            String message = (String)request.getAttribute("message");
+            if(message != null){
+        %>
+        <p style="color: red;"><%= message %></p>
+        <%
+            }
+
+        %>
 
     <h1>ようこそ　家計簿アプリへ</h1>
     <form action="register" method="post">
         預金残高：<input type="text" name="balance"><br />
-        今月の支払い：<input type="test" name="payment"><br />
+        今月の支払い：<input type="text" name="payment"><br />
         <input type="submit" value="送信">
     </form>
 </body>
