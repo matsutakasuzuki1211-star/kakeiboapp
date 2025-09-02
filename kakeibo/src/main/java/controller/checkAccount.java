@@ -22,4 +22,22 @@ public class checkAccount {
             return false;
         }
     }
+
+    public boolean check_login(String username, String password){
+        String sql = "SELECT * FROM Users WHERE username = ? AND password = ?";
+        try (Connection conn = DBConnection.getConnection();
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, username);
+            pstmt.setString(2, password);
+            var rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

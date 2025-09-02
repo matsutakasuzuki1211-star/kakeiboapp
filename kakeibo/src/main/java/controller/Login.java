@@ -10,8 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import java.sql.*;
+import java.util.zip.CheckedInputStream;
 
-import model.to.User;
+import model.User;
+
+import controller.checkAccount;
 
 @WebServlet("/login")
 public class Login extends HttpServlet{
@@ -25,16 +28,9 @@ public class Login extends HttpServlet{
 
         User user = new User(username, password);
         session.setAttribute("user", user);
-        String url = "jdbc:mysql://localhost/aaaa";
         
-        //データベースに接続
-        try(Connection con = DriverManager.getConnection(
-            url,
-            "ssjclient", "sdsd"
-        )){
-        //データベースに問い合わせしてあるかないかを確認
-
-        boolean checkAccount = false;
+        checkAccount chk = new checkAccount();
+        boolean checkAccount = chk.check_login(username, password);
 
         //あった場合top.htmlに遷移,なかった場合エラーメッセージを表示してそのまま
         if(checkAccount){
@@ -44,19 +40,5 @@ public class Login extends HttpServlet{
             request.setAttribute("message", message);
             request.getRequestDispatcher("/login.html").forward(request, response);
         }
-        
-        }catch(SQLException e){
-            e.printStackTrace();
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-
-        
-
-        //データベースの切断
-
-
-
     }
-    
 }
