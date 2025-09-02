@@ -1,3 +1,7 @@
-model\to\User.class
+controller\createAccount.class
 controller\checkAccount.class
+controller\Login.class
+controller\DBConnection.class
+model\User.class
+controller\createUserData.class
 controller\registerInfo.class
