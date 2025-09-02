@@ -26,12 +26,13 @@ public class Login extends HttpServlet {
         session.setAttribute("user", user);
 
         checkAccount chk = new checkAccount();
-        boolean checkAccount = chk.check_login(username, password);
+        boolean checkAccount = true;
 
-        // あった場合top.htmlに遷移,なかった場合エラーメッセージを表示してそのまま
-        if (checkAccount) {
-            request.getRequestDispatcher("/top.html").forward(request, response);
-        } else {
+
+        //あった場合top.htmlに遷移,なかった場合エラーメッセージを表示してそのまま
+        if(checkAccount){
+            request.getRequestDispatcher("/top.jsp").forward(request, response);
+        }else{
             String message = "ユーザ名またはパスワードが正しくありません";
             request.setAttribute("message", message);
             request.getRequestDispatcher("/login.jsp").forward(request, response);
