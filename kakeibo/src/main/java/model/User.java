@@ -1,4 +1,4 @@
-package model.to;
+package model;
 
 import java.io.*;
 
