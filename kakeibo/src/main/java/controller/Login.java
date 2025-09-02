@@ -21,8 +21,8 @@ public class Login extends HttpServlet{
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         //パラメータの取得
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
+        String username = (String)request.getParameter("username");
+        String password = (String)request.getParameter("password");
 
         HttpSession session = request.getSession();
 
@@ -34,7 +34,8 @@ public class Login extends HttpServlet{
 
         //あった場合top.htmlに遷移,なかった場合エラーメッセージを表示してそのまま
         if(checkAccount){
-            request.getRequestDispatcher("/top.html").forward(request, response);
+            //request.getRequestDispatcher("/top.html").forward(request, response);
+            response.sendRedirect("top.html");
         }else{
             String message = "ユーザ名またはパスワードが正しくありません";
             request.setAttribute("message", message);
