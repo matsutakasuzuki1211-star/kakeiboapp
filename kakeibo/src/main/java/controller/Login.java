@@ -38,7 +38,7 @@ public class Login extends HttpServlet{
         }else{
             String message = "ユーザ名またはパスワードが正しくありません";
             request.setAttribute("message", message);
-            request.getRequestDispatcher("/login.html").forward(request, response);
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
         }
     }
 }
