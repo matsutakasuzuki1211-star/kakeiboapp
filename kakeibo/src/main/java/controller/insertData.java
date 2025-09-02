@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class insertData {
+
     public int insertKakeibo(String username, int balance, int payment) {
         String sql = "INSERT INTO kakeibos (username, balance, payment) VALUES (?, ?, ?)";
         int successFlg = 0;
