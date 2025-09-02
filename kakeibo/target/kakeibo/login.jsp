@@ -20,6 +20,7 @@
         パスワード：<input type="password" name="password"><br />
         <input type="submit" value="送信">
     </form>
+    <br>
     <a href="create_account.html">アカウント作成</a>
 </body>
 </html>
