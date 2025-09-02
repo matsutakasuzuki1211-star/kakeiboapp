@@ -9,12 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import java.sql.*;
-import java.util.zip.CheckedInputStream;
-
 import model.User;
 
-import controller.checkAccount;
 
 @WebServlet("/login")
 public class Login extends HttpServlet{
@@ -34,8 +30,7 @@ public class Login extends HttpServlet{
 
         //あった場合top.htmlに遷移,なかった場合エラーメッセージを表示してそのまま
         if(checkAccount){
-            //request.getRequestDispatcher("/top.html").forward(request, response);
-            response.sendRedirect("top.html");
+            request.getRequestDispatcher("/top.jsp").forward(request, response);
         }else{
             String message = "ユーザ名またはパスワードが正しくありません";
             request.setAttribute("message", message);
