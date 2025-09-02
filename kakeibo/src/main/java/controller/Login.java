@@ -7,9 +7,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import model.User;
 
 @WebServlet("/login")
 public class Login extends HttpServlet {
@@ -20,13 +17,13 @@ public class Login extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-        HttpSession session = request.getSession();
-
-        session.setAttribute("username", username);
-
-        checkAccount chk = new checkAccount();
-        boolean checkAccount = chk.check_login(username, password);
-
+        request.setCharacterEncoding("UTF-8");
+        request.setAttribute("username", username);
+        request.setAttribute("password", password);
+        
+        // DBに接続してユーザ名からアカウントが存在しているか確認
+        checkLogin chk = new checkLogin();
+        boolean checkAccount = chk.exitAcount(username, password);
 
         //あった場合top.htmlに遷移,なかった場合エラーメッセージを表示してそのまま
         if(checkAccount){

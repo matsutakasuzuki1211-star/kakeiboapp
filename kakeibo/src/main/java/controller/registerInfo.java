@@ -26,10 +26,10 @@ public class registerInfo extends HttpServlet {
         insertData inserter = new insertData();
         int result = inserter.insertKakeibo((String)session.getAttribute("username"),balance, payment);
         if (result > 0) {
-            request.getRequestDispatcher("/top.html").forward(request, response);
+            request.getRequestDispatcher("/top.jsp").forward(request, response);
         } else {
             request.setAttribute("message", "情報の登録に失敗しました。");
-            request.getRequestDispatcher("/top.html").forward(request, response);
+            request.getRequestDispatcher("/top.jsp").forward(request, response);
         }
     }
 }

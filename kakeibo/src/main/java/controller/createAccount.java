@@ -18,21 +18,21 @@ public class createAccount extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-        checkAccount checker = new checkAccount();
-        if (checker.check(username)) {
-            request.setAttribute("errorMessage", "ユーザ名が既に存在します。");
-            request.getRequestDispatcher("/create_account.html").forward(request, response);
+        UsersDAO dao = new UsersDAO();
+        int result = dao.checkUsername(username);
+        if (result == 1) {
+            request.setAttribute("message", "ユーザ名が既に存在します。");
+            request.getRequestDispatcher("/create_account.jsp").forward(request, response);
         } else {
-            createUserData creator = new createUserData();
-            int result = creator.insertUser(username, password);
-            if (result > 0) {
+            int createCheck = dao.insertUser(username, password);
+            if (createCheck == 1) {
                 HttpSession session = request.getSession();
                 session.setAttribute("username", username);
                 session.setAttribute("password", password);
-                request.getRequestDispatcher("/top.html").forward(request, response);
+                request.getRequestDispatcher("/login.jsp").forward(request, response);
             } else {
-                request.setAttribute("errorMessage", "アカウントの作成に失敗しました。");
-                request.getRequestDispatcher("/create_account.html").forward(request, response);
+                request.setAttribute("message", "アカウントの作成に失敗しました。");
+                request.getRequestDispatcher("/create_account.jsp").forward(request, response);
             }
         }
 

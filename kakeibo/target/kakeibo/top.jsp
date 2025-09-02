@@ -17,7 +17,7 @@
     <jsp:include page="header.jsp">
         <jsp:param name="username" value="<%= username %>" />
     </jsp:include>
- <%
+    <%
             String message = (String)request.getAttribute("message");
             if(message != null){
         %>
@@ -32,6 +32,9 @@
         預金残高：<input type="text" name="balance"><br />
         今月の支払い：<input type="text" name="payment"><br />
         <input type="submit" value="送信">
+    </form>
+    <form action="print" method="get">
+        <input type="submit" value="家計簿を見る">
     </form>
 </body>
 
