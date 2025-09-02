@@ -26,7 +26,7 @@ public class Login extends HttpServlet {
         session.setAttribute("user", user);
 
         checkAccount chk = new checkAccount();
-        boolean checkAccount = true;
+        boolean checkAccount = chk.check_login(username, password);
 
 
         //あった場合top.htmlに遷移,なかった場合エラーメッセージを表示してそのまま

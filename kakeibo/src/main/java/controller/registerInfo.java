@@ -22,6 +22,6 @@ public class registerInfo extends HttpServlet {
         session.setAttribute("balance", balance);
         session.setAttribute("payment", payment);
 
-        request.getRequestDispatcher("/dao.java").forward(request, response);
+        
     }
 }
