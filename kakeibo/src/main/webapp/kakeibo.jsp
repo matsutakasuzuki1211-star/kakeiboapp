@@ -19,16 +19,19 @@
     </jsp:include>
 
     <h1>${username}さんの家計簿</h1>
+<form action="delete" method="post">
     <table border="1">
         <tr>
             <th>選択</th>
-            <th>ユーザー名</th>
+            <th>ID</th>
+            <th>ユーザ名</th>
             <th>残高</th>
             <th>支出</th>
         </tr>
         <c:forEach var="k" items="${kakeiboList}">
             <tr>
-                <td><input type="checkbox" name="selected" value="${k.id}"></td>
+                <td><input type="checkbox" name="selectedIds" value="${k.id}"></td>
+                <td>${k.id}</td>
                 <td>${k.username}</td>
                 <td>${k.balance}</td>
                 <td>${k.payment}</td>
@@ -36,8 +39,12 @@
         </c:forEach>
     </table>
     <div class="center-link">
-    <a href="top.jsp">戻る</a>
+        <input type="submit" value="選択した行を削除">
     </div>
+</form>
+<div class="center-link">
+    <a href="top.jsp">戻る</a>
+</div>
 </body>
 
 </html>
