@@ -1,9 +1,7 @@
 package controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,7 +22,7 @@ public class printKakeibo extends HttpServlet {
 
         request.setAttribute("kakeiboList", kakeiboList);
         request.setAttribute("username", username);
-        request.getRequestDispatcher("kakeibo.jsp").forward(request, response);
+        request.getRequestDispatcher("/kakeibo.jsp").forward(request, response);
     }
 
 }

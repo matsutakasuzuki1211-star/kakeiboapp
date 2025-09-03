@@ -1,11 +1,20 @@
 package model;
 
 public class KakeiboRecord {
+    public int id;
     public String username;
     public int balance;
     public int payment;
 
     public KakeiboRecord() {
+    }
+
+    public int getId(){
+        return this.id;
+    }
+    
+    public void setId(int id){
+        this.id = id;
     }
     
     public String getUsername(){

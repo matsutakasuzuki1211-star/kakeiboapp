@@ -12,7 +12,7 @@ import model.KakeiboRecord;
 public class printDB {
     public List<KakeiboRecord> getTable(String username) {
         List<KakeiboRecord> list = new ArrayList<>();
-        String sql = "SELECT username, balance, payment FROM kakeibos WHERE username = ?";
+        String sql = "SELECT id, username, balance, payment FROM kakeibos WHERE username = ?";
 
         try (Connection conn = DBConnection.getConnection();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -20,6 +20,7 @@ public class printDB {
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 KakeiboRecord k = new KakeiboRecord();
+                k.setId(rs.getInt("id"));
                 k.setUsername(rs.getString("username"));
                 k.setBalance(rs.getInt("balance"));
                 k.setPayment(rs.getInt("payment"));

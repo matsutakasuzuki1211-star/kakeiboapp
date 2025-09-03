@@ -21,18 +21,23 @@
     <h1>${username}さんの家計簿</h1>
     <table border="1">
         <tr>
+            <th>選択</th>
             <th>ユーザー名</th>
             <th>残高</th>
             <th>支出</th>
         </tr>
         <c:forEach var="k" items="${kakeiboList}">
             <tr>
+                <td><input type="checkbox" name="selected" value="${k.id}"></td>
                 <td>${k.username}</td>
                 <td>${k.balance}</td>
                 <td>${k.payment}</td>
             </tr>
         </c:forEach>
     </table>
+    <div class="center-link">
+    <a href="top.jsp">戻る</a>
+    </div>
 </body>
 
 </html>

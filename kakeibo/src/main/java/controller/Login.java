@@ -26,7 +26,7 @@ public class Login extends HttpServlet {
         checkLogin chk = new checkLogin();
         boolean checkAccount = chk.exitAcount(username, password);
 
-        //あった場合top.htmlに遷移,なかった場合エラーメッセージを表示してそのまま
+        // あった場合top.htmlに遷移,なかった場合エラーメッセージを表示してそのまま
         if(checkAccount){
             request.getRequestDispatcher("/top.jsp").forward(request, response);
         }else{
