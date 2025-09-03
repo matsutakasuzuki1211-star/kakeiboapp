@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="java.util.ArrayList,model.KakeiboRecord" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
 <html>
@@ -13,28 +14,23 @@
     
 
     <jsp:include page="header.jsp">
-        <jsp:param name="username" value="${sessionScope.username}" />
+        <jsp:param name="username" value="${username}" />
     </jsp:include>
 
-    <h1>${sessionScope.username}さんの家計簿</h1>
+    <h1>${username}さんの家計簿</h1>
     <table border="1">
         <tr>
             <th>ユーザー名</th>
             <th>残高</th>
             <th>支出</th>
         </tr>
-        <%
-ArrayList<model.KakeiboRecord> kakeiboList = (ArrayList<model.KakeiboRecord>) request.getAttribute("kakeiboList");
-for (model.KakeiboRecord record : kakeiboList) {
-%>
-<tr>
-    <td><%= record.username %></td>
-    <td><%= record.balance %></td>
-    <td><%= record.payment %></td>
-</tr>
-<%
-}
-%>
+        <c:forEach var="k" items="${kakeiboList}">
+            <tr>
+                <td>${k.username}</td>
+                <td>${k.balance}</td>
+                <td>${k.payment}</td>
+            </tr>
+        </c:forEach>
     </table>
 </body>
 

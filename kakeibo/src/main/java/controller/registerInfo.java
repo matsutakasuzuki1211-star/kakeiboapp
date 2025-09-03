@@ -17,15 +17,17 @@ public class registerInfo extends HttpServlet {
 
         int balance = Integer.parseInt(request.getParameter("balance"));
         int payment = Integer.parseInt(request.getParameter("payment"));
-        
+
 
         HttpSession session = request.getSession();
         session.setAttribute("balance", balance);
         session.setAttribute("payment", payment);
+        String username = (String) session.getAttribute("username");
 
-        insertData inserter = new insertData();
-        int result = inserter.insertKakeibo((String)session.getAttribute("username"),balance, payment);
-        if (result > 0) {
+        UsersDAO dao = new UsersDAO();
+        int result = dao.insertKakeibo(username, balance, payment);
+
+        if (result == 1) {
             request.getRequestDispatcher("/top.jsp").forward(request, response);
         } else {
             request.setAttribute("message", "情報の登録に失敗しました。");
