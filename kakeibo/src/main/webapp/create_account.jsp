@@ -5,6 +5,8 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>家計簿アプリ</title>
 </head>
 
 <body>

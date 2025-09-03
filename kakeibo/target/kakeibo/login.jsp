@@ -3,6 +3,8 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>家計簿アプリ</title>
 </head>
 <body>
     <h1>ユーザ名とパスワードを入力してください</h1>
@@ -21,6 +23,8 @@
         <input type="submit" value="送信">
     </form>
     <br>
+    <div class="center-link">
     <a href="create_account.jsp">アカウント作成</a>
+    </div>
 </body>
 </html>
